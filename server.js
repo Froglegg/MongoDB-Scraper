@@ -47,7 +47,7 @@ mongoose.connect(MONGODB_URI);
 var routes = require('./routes/index');
 
 // Import my test routes into the path '/test'
-app.use('/', routes);
+app.use(routes);
 
 // initiliaize app
 app.listen(PORT, function() {

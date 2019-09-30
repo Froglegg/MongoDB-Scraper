@@ -1,4 +1,3 @@
-@charset "utf-8";
 body {
     background-color: whitesmoke;
     font-family: 'karla', sans-serif;
@@ -9,7 +8,8 @@ body {
 }
 
 
-/* global fonts*/
+/* FONTS ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 p {
     font-family: 'karla', sans-serif;
@@ -35,8 +35,13 @@ h2 {
     color: #17252A;
 }
 
+footer p {
+    color: whitesmoke;
+}
 
-/* links */
+
+/* LINKS ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 a {
     color: #1e90ff;
@@ -55,7 +60,8 @@ a:active {
 }
 
 
-/* layout */
+/* LAYOUTS ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 .hero {
     /* height: 15vh;
@@ -99,13 +105,19 @@ section {
 }
 
 
-/* Images */
+/* IMAGE STYLES ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 #profile-image {
     height: auto;
     width: 80%;
     animation: slideInFromRight 1s ease;
+    border-radius: 8px;
 }
+
+
+/* FOOTER STYLES ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 footer {
     bottom: 0;
@@ -127,7 +139,8 @@ span.icons {
 }
 
 
-/* Media Queries */
+/* MEDIA QUERIES ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 @media only screen and (max-width:768px) {
     #main {
@@ -145,7 +158,8 @@ span.icons {
 }
 
 
-/* Accordion styles */
+/* ACCORDION STYLES ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
 
 .accordion {
     background-color: rgba(255, 143, 30, 0.925);
@@ -192,6 +206,10 @@ span.icons {
     color: rgb(32, 42, 23);
 }
 
+
+/* ANIMATIONS ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
+
 @keyframes slideInFromLeft {
     from {
         opacity: 0;
@@ -214,7 +232,12 @@ span.icons {
     }
 }
 
-.button-1 {
+
+/* BUTTONS ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+ ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
+
+.scrape-button {
+    padding: 6px;
     border-radius: 50px;
     color: #17252A;
     border: 3px solid #262636;
@@ -230,7 +253,29 @@ span.icons {
     text-transform: uppercase;
 }
 
-.button-1:hover {
+.scrape-button:hover {
+    color: black;
+    background-color: #20FF1E;
+}
+
+.clear-button {
+    padding: 6px;
+    border-radius: 50px;
+    color: #17252A;
+    border: 3px solid #262636;
+    background-color: whitesmoke;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .15s ease-in-out;
+    font-family: 'poppins', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 10px 15px 10px 15px;
+    text-transform: uppercase;
+}
+
+.clear-button:hover {
     color: whitesmoke;
-    background-color: lightseagreen;
+    background-color: #FF1E1F;
 }

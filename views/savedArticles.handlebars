@@ -20,16 +20,15 @@
 
     </nav>
  <div class="hero">
-       <h1>Scraping with Mongoose</h1> 
+       <h1>Saved articles view</h1> 
     </div>
     <article id="main">
-        <h2 style="text-align:center;">Node.js Express scraper utilizing Axios, Cheerio and MongoDB</h2>
+<h2 style="text-align:center;">Node.js Express scraper utilizing Axios, Cheerio and MongoDB</h2>
         <section class="row">
-            <section class="column">
-                <img src="mongoosePic.jpg" id="profile-image">
-            </section>
-            <section class="column">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error expedita velit earum repellendus consequuntur animi deserunt, atque nam accusantium pariatur sint nihil assumenda esse, illum enim, dignissimos magnam. Voluptatum!</p>
-            </section>
+            {{#each articles}}
+            <div>
+            <h3><a href="{{link}}">{{title}}</a></h3>
+            </div>
+            {{/each}}
         </section>
     </article>

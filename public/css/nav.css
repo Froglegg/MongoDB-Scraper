@@ -17,7 +17,7 @@ nav {
 .nav-links {
     display: flex;
     justify-content: space-around;
-    width: 35%;
+    width: 50%;
     letter-spacing: 0.1em;
     font-weight: bold;
     font-size: 16px;
