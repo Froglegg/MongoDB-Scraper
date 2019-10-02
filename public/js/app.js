@@ -1,21 +1,21 @@
-// When you click the create Note button
-$(document).on("click", "#createNote", function() {
-  alert("create note clicked");
+$(document).on("click", ".addNoteButton", function() {
   // Grab the id associated with the article from the submit button
-  var thisId = $(this).attr("data-id");
-  $(`#noteTaker[data-id=${thisId}]`).show();
-  // Change the id to save note
-  $(this).attr("id", "saveNote");
+  let thisId = $(this).attr("data-id");
+
+  // show the noteTaker with the same data id
+  $(`.noteTaker[data-id=${thisId}]`).show();
+
+  // Switch out class and text for button
+  $(this).attr("class", "saveNoteButton");
   $(this).text("Save Note");
 });
 
 // When you click the savenote button
-$(document).on("click", "#saveNote", function() {
-  alert("saved note clicked");
+$(document).on("click", ".saveNoteButton", function() {
   // Grab the id associated with the article from the submit button
-  var thisId = $(this).attr("data-id");
-  var bodyInput = $("#bodyInput").val();
-  var titleInput = $("#titleInput").val();
+  let thisId = $(this).attr("data-id");
+  let bodyInput = $(`.bodyInput[data-id=${thisId}]`).val();
+  let titleInput = $(`.titleInput[data-id=${thisId}]`).val();
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",
@@ -29,17 +29,17 @@ $(document).on("click", "#saveNote", function() {
   })
     // With that done
     .then(function(data) {
-      // Log the response
-      // hide note taker, revert button id, add text into note area
-      $(`#noteTaker[data-id=${thisId}]`).hide();
-      $(this).attr("id", "createNote");
-      $(`#noteAreaTitle[data-id=${thisId}]`).text(titleInput);
-      $(`#noteAreaBody[data-id=${thisId}]`).text(bodyInput);
+      // hide note taker, revert button class and text, add text into note area
+      $(`.noteTaker[data-id=${thisId}]`).hide();
+      $(this).attr("class", "addNoteButton");
+      $(`.noteAreaTitle[data-id=${thisId}]`).text(titleInput);
+      $(`.noteAreaBody[data-id=${thisId}]`).text(bodyInput);
     });
 });
 
 // When you click the Save Article button
-$(document).on("click", "#saveArticle", function() {
+$(document).on("click", ".saveButton", function() {
+  console.log("clicked");
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -57,7 +57,7 @@ $(document).on("click", "#saveArticle", function() {
       // Log the response
       console.log(data);
       // Empty the notes section
-      $(this).css("pointer-events", "none");
-      $(this).text("Saved!");
+      $(`.saveButton[data-id=${thisId}]`).css("pointer-events", "none");
+      $(`.saveButton[data-id=${thisId}]`).text("Saved!");
     });
 });

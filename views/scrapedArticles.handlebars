@@ -26,19 +26,18 @@
         <h2 style="text-align:center;">Node.js Express scraper utilizing Axios, Cheerio and MongoDB</h2>
         <section class="row">
             {{#each articles}}
-            <div>
+            <div class="column">
             <h3><a href="{{link}}">{{title}}</a></h3>
-            <p>Note:<br>
-            <div id="noteAreaTitle" data-id="{{_id}}">{{note.title}}</div>
-            <div id="noteAreaBody" data-id="{{_id}}">{{note.body}}</div></p>
-            <button data-id={{_id}} class="saveButton" id="saveArticle">Save Article</button>
-            <button data-id={{_id}} class="addNoteButton" id="createNote">Create Note</button>
-            <div id="noteTaker" data-id="{{_id}}" style="display:none;">
-                <input id="titleInput" name='title'>
-                <textarea id="bodyInput" name='body'></textarea>
+            <div class="noteAreaTitle" data-id="{{_id}}"><h4>{{note.title}}</h4></div>
+            <div class="noteAreaBody" data-id="{{_id}}"><p>{{note.body}}</p></div>
+            <button data-id={{_id}} class="saveButton">Save Article</button>
+            <button data-id={{_id}} class="addNoteButton">Create Note</button>
+            <div class="noteTaker" data-id="{{_id}}" style="display:none;">
+                <input class="titleInput" name='title' data-id="{{_id}}">
+                <textarea class="bodyInput" name='body' data-id="{{_id}}"></textarea>
                 </div>
             </div>
-            </div>
+           
             {{/each}}
           
         </section>
