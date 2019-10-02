@@ -235,6 +235,28 @@ span.icons {
 
 /* BUTTONS ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
  ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
+ .saved-articles-button {
+    padding: 6px;
+    border-radius: 50px;
+    color: #17252A;
+    border: 3px solid #262636;
+    background-color: whitesmoke;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .15s ease-in-out;
+    font-family: 'poppins', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 10px 15px 10px 15px;
+    text-transform: uppercase;
+}
+
+.saved-articles-button:hover {
+    color: whitesmoke;
+    background-color: #5733FF;
+
+}
 
 .scrape-button {
     padding: 6px;

@@ -6,8 +6,8 @@ var db = require("../models");
 router.get("/", function(_req, res) {
   res.render("index", {
     styles: ["normalize.css", "nav.css", "styles.css"],
-    headScripts: ["jquery.min.js", "nav.js"],
-    bodyScripts: [],
+    headScripts: ["jquery.min.js"],
+    bodyScripts: ["nav.js"],
     title: "About | Mongo Scraper"
   });
 });
@@ -19,8 +19,8 @@ router.get("/articles", function(req, res) {
     .then(articles => {
       res.render("scrapedArticles", {
         styles: ["normalize.css", "nav.css", "styles.css"],
-        headScripts: ["jquery.min.js", "nav.js"],
-        bodyScripts: ["app.js"],
+        headScripts: ["jquery.min.js"],
+        bodyScripts: ["app.js", "nav.js"],
         title: "Results | Mongo Scraper",
         articles: articles
       });
@@ -31,8 +31,8 @@ router.get("/savedArticles", function(req, res) {
   db.Article.find({ saved: true }).then(articles => {
     res.render("savedArticles", {
       styles: ["normalize.css", "nav.css", "styles.css"],
-      headScripts: ["jquery.min.js", "nav.js"],
-      bodyScripts: [],
+      headScripts: ["jquery.min.js"],
+      bodyScripts: ["app.js", "nav.js"],
       title: "Results | Mongo Scraper",
       articles: articles
     });
