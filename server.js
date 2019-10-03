@@ -24,32 +24,36 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
 
-// import hbs helpers 
+// import hbs helpers
 const hbsHelpers = require("./helpers/hbsHelpers");
 
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main',
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main",
     helpers: hbsHelpers
-}));
+  })
+);
 
-app.set('view engine', 'handlebars');
+app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
+// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI);
 
-var routes = require('./routes/index');
+var routes = require("./routes/index");
 
 // Import my test routes into the path '/test'
 app.use(routes);
 
 // initiliaize app
 app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+  console.log("App listening on PORT " + PORT);
 });
