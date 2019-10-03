@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -11,7 +12,7 @@ const cheerio = require("cheerio");
 // Require all models
 const db = require("./models");
 
-const PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 const app = express();
@@ -43,8 +44,9 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
+// const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI);
 
