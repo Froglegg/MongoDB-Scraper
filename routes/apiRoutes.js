@@ -7,38 +7,36 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 router.get("/api/scrape", function(_req, res) {
-  axios.get("http://www.echojs.com/").then(function(response) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(response.data);
+  axios
+    .get("https://old.reddit.com/r/ProgrammerHumor/")
+    .then(function(response) {
+      // Then, we load that into cheerio and save it to $ for a shorthand selector
+      var $ = cheerio.load(response.data);
 
-    // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+      // Now, we grab every h2 within an article tag, and do the following:
+      $("a.title").each(function(i, element) {
+        // Save an empty result object
+        var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this)
-        .children("a")
-        .text();
-      result.link = $(this)
-        .children("a")
-        .attr("href");
+        // Add the text and href of every link, and save them as properties of the result object
+        result.title = $(this).text();
+        result.link = $(this).attr("href");
+        result.image = $(this).attr("data-href-url");
+        // Create a new Article using the `result` object built from scraping
+        db.Article.create(result)
+          .then(function(dbArticle) {
+            // View the added result in the console
+            console.log(dbArticle);
+          })
+          .catch(function(err) {
+            // If an error occurred, log it
+            console.log(err);
+          });
+      });
 
-      // Create a new Article using the `result` object built from scraping
-      db.Article.create(result)
-        .then(function(dbArticle) {
-          // View the added result in the console
-          console.log(dbArticle);
-        })
-        .catch(function(err) {
-          // If an error occurred, log it
-          console.log(err);
-        });
+      // Send a message to the client
+      res.redirect("/articles");
     });
-
-    // Send a message to the client
-    res.redirect("/articles");
-  });
 });
 
 // for viewing articles json
@@ -97,6 +95,38 @@ router.post("/api/articles/save/:id", function(req, res) {
     .then(dbArticleSaved => {
       console.log(dbArticleSaved);
       res.json(dbArticleSaved);
+    })
+    .catch(err => {
+      console.log(err);
+      res.json(err);
+    });
+});
+
+// route for clearing saved articles... essentially, updates all articles, sets the saved to false, redirects to saved articles page
+router.get("/api/clearSaved", function(req, res) {
+  console.log(req.body);
+  db.Article.update(
+    { saved: "true" },
+    { $set: { saved: "false" } },
+    { multi: true }
+  )
+    .then(updatedArticles => {
+      console.log(updatedArticles);
+      res.redirect("/savedArticles");
+    })
+    .catch(err => {
+      console.log(err);
+      res.json(err);
+    });
+});
+
+// route for clearing scraped articles... this is a bit complex, this route clears all the articles in the database that ARE NOT SAVED
+router.get("/api/clearArticles", function(req, res) {
+  console.log(req.body);
+  db.Article.remove({ saved: "false" })
+    .then(removedArticles => {
+      console.log(removedArticles);
+      res.redirect("/articles");
     })
     .catch(err => {
       console.log(err);

@@ -3,9 +3,8 @@
             <h4><a href="/">Mongo Scraper</a></h4>
         </div>
         <ul class="nav-links">
-            <li><a class="saved-articles-button" href="/savedArticles">Saved Articles</a></li>
-            <li><a class="scrape-button" href="/api/scrape">Mongo Scrape!</a></li>
-            <li><a class="clear-button" href="/api/clear">Mongo Clear!</a></li>
+            <li><a class="saved-articles-link" href="/savedArticles">Saved Articles</a></li>
+            <li><a class="articles-link" href="/articles">Scraped Articles</a></li>
         </ul>
         <div class="burger">
             <div class="line1">
@@ -20,16 +19,17 @@
 
     </nav>
  <div class="hero">
-       <h1>Scraping with Mongoose</h1> 
+       <h1>Scraping Reddit with Mongoose</h1> 
     </div>
     <article id="main">
-        <h2 style="text-align:center;">Node.js Express scraper utilizing Axios, Cheerio and MongoDB</h2>
+        <h2 style="text-align:center;">Node.js Express scraper utilizing Axios, Cheerio and MongoDB/Mongoose</h2>
         <section class="row">
             <section class="column">
                 <img src="mongoosePic.jpg" id="profile-image">
             </section>
             <section class="column">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error expedita velit earum repellendus consequuntur animi deserunt, atque nam accusantium pariatur sint nihil assumenda esse, illum enim, dignissimos magnam. Voluptatum!</p>
+                <p>This scraper targets my favorite web 2.0 aggregator site (Reddit) and pulls in the latest Programmer Humor posts. It uses Mongoose functions to create, read, update and delete data from MongoDB. The scraper uses axios to make a request to the programmer humor thread and cheerio to parse the html it returns. Handlebars with custom helpers is used to render the front-end, which is some custom flexbox CSS. Check out the mobile version in devtools or on your device.</p>
+                <li style="list-style: none;text-align:center;margin:0 auto;"><a class="scrape-button" href="/api/scrape">Mongo Scrape!</a></li> 
             </section>
         </section>
     </article>

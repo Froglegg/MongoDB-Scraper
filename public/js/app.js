@@ -31,15 +31,15 @@ $(document).on("click", ".saveNoteButton", function() {
     .then(function(data) {
       // hide note taker, revert button class and text, add text into note area
       $(`.noteTaker[data-id=${thisId}]`).hide();
-      $(this).attr("class", "addNoteButton");
       $(`.noteAreaTitle[data-id=${thisId}]`).text(titleInput);
       $(`.noteAreaBody[data-id=${thisId}]`).text(bodyInput);
     });
+  $(this).attr("class", "addNoteButton");
+  $(this).text("Create Note");
 });
 
 // When you click the Save Article button
 $(document).on("click", ".saveButton", function() {
-  console.log("clicked");
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -55,9 +55,9 @@ $(document).on("click", ".saveButton", function() {
     // With that done
     .then(function(data) {
       // Log the response
-      console.log(data);
       // Empty the notes section
       $(`.saveButton[data-id=${thisId}]`).css("pointer-events", "none");
       $(`.saveButton[data-id=${thisId}]`).text("Saved!");
     });
+  $(this).addClass("savedActive");
 });

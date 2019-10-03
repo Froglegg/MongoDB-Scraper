@@ -3,9 +3,8 @@
             <h4><a href="/">Mongo Scraper</a></h4>
         </div>
         <ul class="nav-links">
-            <li><a class="saved-articles-button" href="/savedArticles">Saved Articles</a></li>
-            <li><a class="scrape-button" href="/api/scrape">Mongo Scrape!</a></li>
-            <li><a class="clear-button" href="/api/clear">Mongo Clear!</a></li>
+            <li><a class="saved-articles-link" href="/savedArticles">Saved Articles</a></li>
+            <li><a class="articles-link" href="/articles">Scraped Articles</a></li>
         </ul>
         <div class="burger">
             <div class="line1">
@@ -20,14 +19,24 @@
 
     </nav>
  <div class="hero">
-       <h1>Saved articles view</h1> 
+       <h1>Saved Articles</h1>
+        <li style="list-style: none;text-align:center;margin:0 auto;"><a class="clear-button" href="/api/clearSaved">Clear Saved Articles!</a></li> 
     </div>
     <article id="main">
-<h2 style="text-align:center;">Node.js Express scraper utilizing Axios, Cheerio and MongoDB</h2>
         <section class="row">
             {{#each articles}}
-            <div class="row">
+            <div class="articleBox">
             <h3><a href="{{link}}">{{title}}</a></h3>
+              <section class="column">
+                <img src="{{image}}" style="width:50%;height:auto;">
+            </section>
+            <div class="noteAreaTitle" data-id="{{_id}}"><h3>Note: {{note.title}}</h3></div>
+            <div class="noteAreaBody" data-id="{{_id}}"><p>{{note.body}}</p></div>
+            <button data-id={{_id}} class="addNoteButton">Create Note</button>
+            <div class="noteTaker" data-id="{{_id}}" style="display:none;">
+                <div><input class="titleInput" name='title' data-id="{{_id}}" placeholder="Title"></div>
+                <div><textarea class="bodyInput" name='body' data-id="{{_id}}" placeholder="Note"></textarea></div>
+                </div>
             </div>
             {{/each}}
         </section>
