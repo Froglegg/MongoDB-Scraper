@@ -26,9 +26,12 @@
         <section class="row">
             {{#each articles}}
             <div class="articleBox">
-            <h3><a href="{{link}}">{{title}}</a></h3>
+            <h3><a href="{{commentsLink}}">{{title}}</a></h3>
               <section class="column">
-                <img src="{{image}}" style="width:50%;height:auto;">
+                <a href="{{image}}"><img src="{{image}}" style="width:50%;height:auto;"></a>
+            </section>
+                                                <section class="column">
+                <a href="{{commentsLink}}">{{commentsText}}</strong></a>
             </section>
             <div class="noteAreaTitle" data-id="{{_id}}"><h3>Note: {{note.title}}</h3></div>
             <div class="noteAreaBody" data-id="{{_id}}"><p>{{note.body}}</p></div>
